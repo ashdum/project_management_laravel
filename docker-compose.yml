@@ -32,7 +32,7 @@ services:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "${DB_PORT}:5432"
+      - "${DB_EXTERNAL_PORT}:${DB_INTERNAL_PORT}"
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
