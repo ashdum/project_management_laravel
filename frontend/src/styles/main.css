@@ -1,0 +1,110 @@
+/* Основные стили */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8;
+  }
+  
+  /* Контейнер */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Хедер */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Навигация */
+  .nav {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .primary {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  /* Главный контент */
+  .main-content {
+    padding: 50px 0;
+  }
+  
+  .intro h2 {
+    font-size: 36px;
+    color: #333;
+  }
+  
+  .intro p {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .cta {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Фичи */
+  .features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+  }
+  
+  .feature {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 30%;
+  }
+  
+  .feature h3 {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  /* Футер */
+  .footer {
+    margin-top: 50px;
+    background: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+  }
+  
