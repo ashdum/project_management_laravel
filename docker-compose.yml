@@ -1,0 +1,86 @@
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx_lv
+    ports:
+      - "${NGINX_PORT}:80"
+    volumes:
+      - ./app:/var/www/html
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - php
+    networks:
+      - app-network
+
+  php:
+    build:
+      context: ./docker/php
+    container_name: php_lv
+    volumes:
+      - ./app:/var/www/html
+    env_file:
+      - .env
+    networks:
+      - app-network
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres_lv
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo_lv
+    ports:
+      - "${MONGO_DB_PORT}:27017"
+    volumes:
+      - mongodata:/data/db
+    networks:
+      - app-network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_lv
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    ports:
+      - "${RABBITMQ_PORT}:5672"
+      - "${RABBITMQ_MANAGEMENT_PORT}:15672"
+    networks:
+      - app-network
+
+  redis:
+    image: redis:alpine
+    container_name: redis_lv
+    ports:
+      - "${REDIS_PORT}:6379"
+    networks:
+      - app-network
+
+  clickhouse:
+    image: clickhouse/clickhouse-server
+    container_name: clickhouse_lv
+    ports:
+      - "${CLICKHOUSE_HTTP_PORT}:8123"
+      - "${CLICKHOUSE_TCP_PORT}:9000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  pgdata:
+  mongodata:
