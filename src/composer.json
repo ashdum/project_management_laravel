@@ -11,6 +11,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "nuwave/lighthouse": "^6.49",
         "predis/predis": "^2.3",
         "smi2/phpclickhouse": "^1.6"
     },

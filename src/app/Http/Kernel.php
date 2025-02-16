@@ -67,4 +67,9 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'api' => [EnsureFrontendRequestsAreStateful::class, 'throttle:api', \Illuminate\Routing\Middleware\SubstituteBindings::class],
     ];
+
+    protected $routeMiddleware = [
+        // ...
+        'log.graphql' => \App\Http\Middleware\LogGraphQLRequests::class,
+    ];
 }

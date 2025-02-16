@@ -1,0 +1,23 @@
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Mutation {
+    register(name: String!, email: String!, password: String!): User!
+        @field(resolver: "App\\GraphQL\\Mutations\\AuthMutator@register")
+    
+    login(email: String!, password: String!): String!
+        @field(resolver: "App\\GraphQL\\Mutations\\AuthMutator@login")
+    
+    logout: Boolean!
+        @field(resolver: "App\\GraphQL\\Mutations\\AuthMutator@logout") @guard
+}
+
+type Query {
+    me: User @field(resolver: "App\\GraphQL\\Queries\\UserQuery@me") @guard
+}
+

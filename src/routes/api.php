@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Nuwave\Lighthouse\Http\GraphQLController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,3 +72,6 @@ Route::post('/logout', function (Request $request) {
     $request->user()->tokens()->delete();
     return response()->json(['message' => 'Logged out']);
 })->middleware('auth:sanctum');
+
+Route::middleware(['api'])->post('/graphql', '\Nuwave\Lighthouse\Support\Http\Controllers\GraphQLController@query');
+Route::post('/graphql', GraphQLController::class)->middleware('log.graphql');
